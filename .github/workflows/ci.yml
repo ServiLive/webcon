@@ -14,12 +14,14 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - ubuntu-latest
+          - ubuntu-22.04
           - windows-latest
         sm_version:
           - "1.12-dev"
+        mm_version:
+          -  "1.12-dev"
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-22.04
             os_short: linux
           - os: windows-latest
             os_short: win
@@ -48,7 +50,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: alliedmodders/metamod-source
-          ref: master
+          ref: ${{ matrix.mm_version }}
           submodules: recursive
           path: metamod-source
 
